@@ -15,12 +15,21 @@ body {
     list-style: none;
     justify-content: flex-end;
 }
-
+/*
 .nav-link:hover{
    background-color: $secondary !important;
    color: $light;
 }
-
+*/
 ul {
     list-style-type: none;
+}
+
+.welcome{
+    color: $light;
+}
+
+.btn-gig{
+    background-color: $secondary;
+    color: $light;
 }

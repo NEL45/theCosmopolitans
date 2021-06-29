@@ -28,7 +28,7 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $client;
-    
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -58,7 +58,7 @@ class Comment
      * @ORM\Column(type="date", nullable=true)
      */
     private $createdAt;
-    
+
     public function getId(): ?int
     {
         return $this->id;

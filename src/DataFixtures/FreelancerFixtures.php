@@ -8,37 +8,26 @@ use Doctrine\Persistence\ObjectManager;
 
 class FreelancerFixtures extends Fixture
 {
-    private const FREELANCERS = [
+    public const FREELANCERS = [
         [
             'firstname' => 'Séverine',
             'lastname' => 'Coute',
-            'email' => 'freelancer1@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Gersey',
             'lastname' => 'Stelmach',
-            'email' => 'freelancer2@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Thuy',
             'lastname' => 'Dieu',
-            'email' => 'freelancer3@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Joel',
             'lastname' => 'Fillion',
-            'email' => 'freelancer4@gmail.com',
-            'password' => '123456',
-
         ],
         [
             'firstname' => 'Nicolas',
             'lastname' => 'Weickert',
-            'email' => 'freelancer5@gmail.com',
-            'password' => '123456',
         ],
     ];
 
@@ -46,13 +35,19 @@ class FreelancerFixtures extends Fixture
     {
         foreach (self::FREELANCERS as $index => $freelancerDetail) {
             $freelancer = new Freelancer();
+            $freelancer->setUser($this->getReference('user_' . $index, $freelancer));
             $freelancer->setFirstname($freelancerDetail['firstname']);
             $freelancer->setLastname($freelancerDetail['lastname']);
-            $freelancer->setEmail($freelancerDetail['email']);
-            $freelancer->setPassword($freelancerDetail['password']);
             $manager->persist($freelancer);
             $this->addReference('freelancer_' . $index, $freelancer);
         }
         $manager->flush();
     }
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class
+        ];
+    }
+    
 }
