@@ -14,32 +14,22 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
         [
             'firstname' => 'Britney',
             'lastname' => 'Spears',
-            'email' => 'client1@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Angelina',
             'lastname' => 'Jolie',
-            'email' => 'client2@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Albert',
             'lastname' => 'Einstein',
-            'email' => 'client3@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Bill',
             'lastname' => 'Gates',
-            'email' => 'client4@gmail.com',
-            'password' => '123456',
         ],
         [
             'firstname' => 'Donald',
             'lastname' => 'Trump',
-            'email' => 'client5@gmail.com',
-            'password' => '123456',
         ],
     ];
 
@@ -47,10 +37,9 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach (self::CLIENT as $index => $clientDetails) {
             $client = new Client();
+            $client->setUser($this->getReference('user_' . $index, $client));
             $client->setFirstname($clientDetails['firstname']);
             $client->setLastname($clientDetails['lastname']);
-            $client->setEmail($clientDetails['email']);
-            $client->setPassword($clientDetails['password']);
            // $client->setLevel($this->getReference('level1'));
             $manager->persist($client);
             $this->addReference('client_' . $index, $client);
@@ -61,6 +50,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
+            UserFixtures::class,
             LevelFixtures::class,
         ];
     }
