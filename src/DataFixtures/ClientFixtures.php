@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\LevelFixtures;
 use App\Entity\Client;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -9,7 +10,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class ClientFixtures extends Fixture implements DependentFixtureInterface
 {
-    private const CLIENT = [
+    public const CLIENT = [
         [
             'firstname' => 'Britney',
             'lastname' => 'Spears',
