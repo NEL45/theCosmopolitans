@@ -1,0 +1,75 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gigs') }}
+{% endblock %}
+
+{% block title %}Fiverr | My Gigs
+{% endblock %}
+
+{% block body %}
+
+    <main>
+        <section class="container">
+            <div class="card gigSection  mt-5">
+                <div class="card-body">
+
+                    <h1 class="h1 text-center mt-5">My Gigs</h1>
+
+                    <table class="table table-sm mt-5 text-center">
+                        <thead>
+                            <tr>
+                                <th class="thGigs" scope="col">#</th>
+                                <th scope="col">Gig</th>
+                                <th scope="col">Buyer</th>
+                                <th scope="col">Started at</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="py-3">
+                                    1
+                                </th>
+                                <td class="py-3">Design</td>
+                                <td class="py-3">Fulaninho3</td>
+                                <td class="py-3">{{ "now"|date("d/m/Y") }}</td>
+                                <td class="py-3">Finished</td>
+                                <td class="py-3">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        Add Review
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">How was your experience with the Nickname?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+{% endblock %}

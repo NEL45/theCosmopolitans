@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <main class="container" style="background-color:yellow;">
+        <div class="row">
+        {# SÉVERINE: On the left: Section profile client: personnal infos #}
+            <div class="col-2 informations">
+            {# Pour Séverine: TU peux coder dans cette section #}
+            </div>
+        {# End Section profile client #}
+            <div class="col-1">
+            </div>
+        {# THUY: On the right: Section Gig + Comments #}
+            <div class="col-7 informations">
+                {# On the right: Section Gig #}
+                <div class="row">
+                    <h3 class="my-5">All finished gigs</h3>
+                    <div class="bg-light my-2 px-3 py-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Gig</th>
+                                    <th scope="col">Seller</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Exchange Experirence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for client in clients %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ client.firstname }}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                    </div>
+                </div>
+                {# End Section Gig #}
+                {# On the right: Section Comments #}
+                <div class="row">
+
+                </div>
+                {# End Section Comments #}
+            </div>
+        {# End Section #}
+    </main>
+{% endblock %}
