@@ -9,8 +9,6 @@ class HistoryFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        
-
         $manager->flush();
     }
 }
