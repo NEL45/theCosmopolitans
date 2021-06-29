@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\MessageType;
+use App\Entity\Freelancer;
 use App\Repository\MessageRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/message")
@@ -49,12 +51,26 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="message_show", methods={"GET"})
+     * @Route("/{freelancer_one}/{freelancer_two}", name="message_show", methods={"GET", "POST"})
+     * @ParamConverter("freelancer", class="App\Entity\Freelancer", options={"mapping": {"freelancer_one": "id"}})
+     * @ParamConverter("freelancer2", class="App\Entity\Freelancer", options={"mapping": {"freelancer_two": "id"}})
      */
-    public function show(Message $message): Response
+    public function show(Freelancer $freelancer, Freelancer $freelancer2): Response
     {
+        $messageone = $this->getDoctrine()
+        ->getRepository(Message::class)
+        ->findBy([
+            'fromFreelancer' => $freelancer,
+            ]);
+        $messagetwo = $this->getDoctrine()
+        ->getRepository(Message::class)
+        ->findBy([
+            'toFreelancer' => $freelancer2,
+            ]);
         return $this->render('message/show.html.twig', [
-            'message' => $message,
+            'freelancer' => $freelancer,
+            'messagesone' => $messageone,
+            'messagestwo' => $messagetwo,
         ]);
     }
 
