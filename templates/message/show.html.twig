@@ -5,9 +5,6 @@
 {% block body %}
     <h1>Message</h1>
     <div class="fw-bold">
-    <pre>
-        {{ dump(messagesone) }}
-    </pre>
         {% for message in messagesone %}
             {{ message.ToFreelancer.firstname ~ ' ' ~ message.ToFreelancer.lastname }}
             {{ message.subject }}
