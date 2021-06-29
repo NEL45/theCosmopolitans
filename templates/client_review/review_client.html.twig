@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gigs') }}
+{% endblock %}
+
+{% block title %}Fiverr | My Gigs
+{% endblock %}
+
+{% block body %}
+
+    <main>
+        <section class="container">
+            <div class="card gigSection  mt-5">
+                <div class="card-body">
+
+                    <h1 class="h1 text-center mt-5">How was your experience with
+                        <span class="fw-bold clientHighlight">{{ client.firstname }}
+                            {{ client.lastname }}?</span>
+                    </h1>
+                    {{ form_start(form) }}
+                    <div class="text-center d-flex flex-row justify-content-center">
+                        <div class="m-3">
+                            {{form_label(form.reactivity)}}<br>
+                            {{form_widget(form.reactivity)}}
+                        </div>
+                        <div class="m-3">
+                            {{form_label(form.explanation)}}<br>
+                            {{form_widget(form.explanation)}}
+                        </div>
+                        <div class="m-3">
+                            {{form_label(form.courtesy)}}<br>
+                            {{form_widget(form.courtesy)}}
+                        </div>
+                        <div class="m-3">
+                            {{form_label(form.recommandation)}}<br>
+                            {{form_widget(form.recommandation)}}
+                        </div>
+                    </div>
+                    <div class="m-3">
+                        {{form_label(form.comment)}}<br>
+                        {{form_widget(form.comment, {'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div>
+                        <div class="text-center">
+                            <input class="btn btn-success text-light mt-3" type='submit' value='Send your review'>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </section>
+        </main>
+    {% endblock %}
