@@ -3,5 +3,24 @@
 
 body {
     background-color: $light;
-    color: $light;
+    color: $dark;
+}
+
+.navbar {
+    background-color: $darkSecondary;
+}
+
+.nav-link{
+    color: $light;  
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.nav-link:hover{
+   background-color: $secondary !important;
+   color: $light;
+}
+
+ul {
+    list-style-type: none;
 }
