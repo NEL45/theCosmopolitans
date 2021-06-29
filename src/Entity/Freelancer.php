@@ -28,14 +28,10 @@ class Freelancer
     private string $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToOne(targetEntity=user::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private string $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $password;
+    private $user;
 
     public function getId(): ?int
     {
@@ -66,26 +62,14 @@ class Freelancer
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getUser(): ?user
     {
-        return $this->email;
+        return $this->user;
     }
 
-    public function setEmail(string $email): self
+    public function setUser(user $user): self
     {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+        $this->user = $user;
 
         return $this;
     }
