@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <main class="container" style="background-color:yellow;">
+    <main class="container">
         <div class="row">
         {# SÉVERINE: On the left: Section profile client: personnal infos #}
             <div class="col-2 informations">
@@ -11,9 +11,9 @@
             <div class="col-1">
             </div>
         {# THUY: On the right: Section Gig + Comments #}
-            <div class="col-7 informations">
+            <div class="col-7 gigs-history mx-auto">
                 {# On the right: Section Gig #}
-                <div class="row">
+                <div class="row gig text-center">
                     <h3 class="my-5">All finished gigs</h3>
                     <div class="bg-light my-2 px-3 py-2">
                         <table class="table">
@@ -27,12 +27,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for client in clients %}
+                            {% for history in histories %}
                                 <tr>
                                     <th scope="row">{{ loop.index }}</th>
-                                    <td>{{ client.firstname }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ history.gig.name }}</td>
+                                    <td>{{ history.freelancer.firstname }} {{ history.freelancer.lastname }}</td>
+                                    <td>{{ history.createdAt|format_date() }}  </td>
+                                    <td> 
+                                        <button class="btn btn-success text-light"> Contact the seller </button>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
