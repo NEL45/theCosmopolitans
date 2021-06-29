@@ -55,19 +55,18 @@ class MessageController extends AbstractController
      * @ParamConverter("freelancer", class="App\Entity\Freelancer", options={"mapping": {"freelancer_one": "id"}})
      * @ParamConverter("freelancer2", class="App\Entity\Freelancer", options={"mapping": {"freelancer_two": "id"}})
      */
-    public function show(Freelancer $freelancer,Freelancer $freelancer2): Response
-    {   
-        $messageone=$this->getDoctrine()
+    public function show(Freelancer $freelancer, Freelancer $freelancer2): Response
+    {
+        $messageone = $this->getDoctrine()
         ->getRepository(Message::class)
         ->findBy([
             'fromFreelancer' => $freelancer,
             ]);
-        $messagetwo=$this->getDoctrine()
+        $messagetwo = $this->getDoctrine()
         ->getRepository(Message::class)
         ->findBy([
             'toFreelancer' => $freelancer2,
             ]);
-        
         return $this->render('message/show.html.twig', [
             'freelancer' => $freelancer,
             'messagesone' => $messageone,

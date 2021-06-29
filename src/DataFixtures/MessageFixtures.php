@@ -14,15 +14,15 @@ class MessageFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create();
-        $j=4;
+        $ifree2 = 4;
         for ($i = 0; $i < self::MAX_MESSAGES; $i++) {
             $message = new Message();
             $message->setSubject($faker->sentence());
             $message->setSentdate($faker->dateTime());
             $message->setMessage($faker->paragraph(2));
             $message->setFromFreelancer($this->getReference('freelancer_' . $i));
-            $message->setToFreelancer($this->getReference('freelancer_' . $j));
-            $j--;
+            $message->setToFreelancer($this->getReference('freelancer_' . $ifree2));
+            $ifree2--;
             $manager->persist($message);
             $this->addReference('message' . $i, $message);
         }
