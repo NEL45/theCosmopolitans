@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
 
         for ($i = 0; $i <= self::MAX_USERS; $i++) {
             $user = new User();
-            $user->setUsername($this->faker->unique()->firstName() . $this->faker->randomNumber(2));
+            $user->setUsername($faker->name());
             $user->setEmail('email' . $i . '@gmail.com');
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,

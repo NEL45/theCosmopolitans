@@ -48,9 +48,11 @@ class GigController extends AbstractController
         $comment->setFreelance($freelancer);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
+            $this->addFlash('success', 'Thank you! Your review was sent!');
             return $this->redirect($request->getUri());
         }
 
