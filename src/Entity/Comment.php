@@ -58,7 +58,7 @@ class Comment
      * @ORM\Column(type="date", nullable=true)
      */
     private $createdAt;
-  
+
     public function getId(): ?int
     {
         return $this->id;
