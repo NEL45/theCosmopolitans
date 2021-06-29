@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class FreelancerFixtures extends Fixture
 {
-    private const FREELANCERS = [
+    public const FREELANCERS = [
         [
             'firstname' => 'Séverine',
             'lastname' => 'Coute',
