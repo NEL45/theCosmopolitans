@@ -11,7 +11,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class HistoryFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const MAX_HISTORY = 6;
+    public const MAX_HISTORY = 10;
 
     public function load(ObjectManager $manager)
     {

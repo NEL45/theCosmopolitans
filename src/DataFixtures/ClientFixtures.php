@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\DataFixtures\LevelFixtures;
+use App\DataFixtures\UserFixtures;
 use App\Entity\Client;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -38,6 +39,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::CLIENT as $index => $clientDetails) {
             $client = new Client();
             // $client->setUser($this->getReference('user_' . $index, $client));
+            $client->setUser($this->getReference('user_'. rand(0,UserFixtures::MAX_USERS - 1)));
             $client->setFirstname($clientDetails['firstname']);
             $client->setLastname($clientDetails['lastname']);
            // $client->setLevel($this->getReference('level1'));

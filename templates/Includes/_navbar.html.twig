@@ -34,16 +34,16 @@
                         </a>
                         <ul class="dropdown-menu shadow-lg w-100" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a class="dropdown-item text-wrap text-dark py-2" href="{{ path('profile_show', {username: app.user.username}) }}">
+                                <a class="dropdown-item text-wrap text-dark py-2" href="{{ path('profile_show', { 'client_id': app.user.client.id }) }}">
                                     <i class="fas fa-user me-2"></i>My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-wrap text-dark py-2" href="{{ path('profile_show', {username: app.user.username}) }}">
+                                <a class="dropdown-item text-wrap text-dark py-2" href="#">
                                     <i class="fas fa-user me-2"></i>My orders</a>
                             </li>
 
                             <li>
-                                <a class="dropdown-item text-wrap text-dark py-2" href="{{ path('profile_show', {username: app.user.username}) }}">
+                                <a class="dropdown-item text-wrap text-dark py-2" href="#">
                                     <i class="fas fa-user me-2"></i>My gigs</a>
                             </li>
                             

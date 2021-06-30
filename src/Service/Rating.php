@@ -9,11 +9,11 @@ use App\Repository\CommentRepository;
 class Rating
 {
 
-    public function calculateAvarage(int $rating1, int $rating2, int $rating3, int $rating4): float
+    public function calculateAverage(int $rating1, int $rating2, int $rating3, int $rating4): float
     {
 
-        $avarage = ($rating1 + $rating2 + $rating3 + $rating4) / 4;
+        $average = ($rating1 + $rating2 + $rating3 + $rating4) / 4;
 
-        return $avarage;
+        return $average;
     }
 }
