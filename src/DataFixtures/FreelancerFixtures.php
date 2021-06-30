@@ -40,6 +40,7 @@ class FreelancerFixtures extends Fixture implements DependentFixtureInterface
             $freelancer->setUser($this->getReference('user_'. rand(0,UserFixtures::MAX_USERS - 1)));
             $freelancer->setFirstname($freelancerDetail['firstname']);
             $freelancer->setLastname($freelancerDetail['lastname']);
+            
             $manager->persist($freelancer);
             $this->addReference('freelancer_' . $index, $freelancer);
         }

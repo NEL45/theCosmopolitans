@@ -34,12 +34,10 @@ class Client
      */
     private ?string $company;
 
-
     /**
      * @ORM\ManyToOne(targetEntity=Level::class)
      */
     private ?Level $level;
-
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="client")
@@ -139,6 +137,7 @@ class Client
 
         return $this;
     }
+}
 
     public function getUser(): ?User
     {

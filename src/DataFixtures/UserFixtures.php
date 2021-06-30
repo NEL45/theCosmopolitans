@@ -48,6 +48,7 @@ class UserFixtures extends Fixture
         ));
 
         $manager->persist($user);
+        
 
         // Création d’un utilisateur de type “client”
         $client = new User();
@@ -70,7 +71,6 @@ class UserFixtures extends Fixture
             'jerry'
         ));
         $manager->persist($freelance);
-        
         $manager->flush();
     }
 }
