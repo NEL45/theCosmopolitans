@@ -40,10 +40,18 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setUser($this->getReference('user_' . $index, $client));
             $client->setFirstname($clientDetails['firstname']);
             $client->setLastname($clientDetails['lastname']);
-           // $client->setLevel($this->getReference('level1'));
+            $client->setLevel($this->getReference('level1'));
             $manager->persist($client);
             $this->addReference('client_' . $index, $client);
         }
+
+        $client = new Client();
+        $client->setUser($this->getReference('ducasse', $client));
+        $client->setFirstname('Alain');
+        $client->setLastname('Ducasse');
+        $client->setLevel($this->getReference('level1'));
+        $manager->persist($client);
+       
         $manager->flush();
     }
 

@@ -40,16 +40,17 @@ class Client
      */
     private ?Level $level;
 
-    /**
-     * @ORM\OneToOne(targetEntity=user::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="client")
      */
     private $comments;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="client", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function __construct()
     {
@@ -109,18 +110,6 @@ class Client
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
-
-    public function setUser(user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Comment[]
      */
@@ -147,6 +136,18 @@ class Client
                 $comment->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
