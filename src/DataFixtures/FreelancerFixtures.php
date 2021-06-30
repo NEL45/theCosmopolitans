@@ -38,6 +38,7 @@ class FreelancerFixtures extends Fixture
             $freelancer->setUser($this->getReference('user_' . $index, $freelancer));
             $freelancer->setFirstname($freelancerDetail['firstname']);
             $freelancer->setLastname($freelancerDetail['lastname']);
+            
             $manager->persist($freelancer);
             $this->addReference('freelancer_' . $index, $freelancer);
         }
