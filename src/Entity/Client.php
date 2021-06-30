@@ -137,7 +137,6 @@ class Client
 
         return $this;
     }
-}
 
     public function getUser(): ?User
     {

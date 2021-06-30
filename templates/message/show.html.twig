@@ -1,23 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Message{% endblock %}
+{% block title %}Message
+{% endblock %}
 
 {% block body %}
-    <h1>Message</h1>
-    <div class="fw-bold">
-        {% for message in messagesone %}
-            {{ message.ToFreelancer.firstname ~ ' ' ~ message.ToFreelancer.lastname }}
-            {{ message.subject }}
-            {{ message.message }}
-            {{ message.sentdate|date('d/m/Y, H:i:s') }}
-        {% endfor %}
-    </div>
-    <div class="fw-bold">
-        {% for message in messagestwo %}
-            {{ message.FromFreelancer.firstname ~ ' ' ~ message.FromFreelancer.lastname }}
-            {{ message.subject }}
-            {{ message.message }}
-            {{ message.sentdate|date('d/m/Y, H:i:s') }}
-        {% endfor %}
-    </div>
-{% endblock %}
+    <main>
+        <section class="container my-5">
+         <div class="card mt-5">
+            <div class="text-center">
+                <h1 class="my-5">Inbox</h1>
+            </div>
+            <div class="fw-bold">
+                {% for message in messagesone %}
+                    <div class="card text-dark bg-light m-4" style="max-width: 100%%;">
+                        <div class="card-header">To:
+                            {{ message.ToFreelancer.firstname ~ ' ' ~ message.ToFreelancer.lastname }}
+                            à
+                            {{ message.sentdate|date('d/m/Y, H:i:s') }}</div>
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <strong>Subject:</strong>
+                                {{ message.subject }}
+                            </h6>
+                            <p class="card-text fw-light">
+                                {{ message.message }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% for message in messagestwo %}
+                    <div class="card text-dark bg-light m-4" style="max-width: 100%;">
+                        <div class="card-header">From:
+                            {{ message.ToFreelancer.firstname ~ ' ' ~ message.ToFreelancer.lastname }}
+                            à
+                            {{ message.sentdate|date('d/m/Y, H:i:s') }}</div>
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <strong>Subject:</strong>
+                                {{ message.subject }}
+                            </h6>
+                            <p class="card-text fw-light">
+                                {{ message.message }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                 </div>
+            </main>
+        </section>
+    {% endblock %}

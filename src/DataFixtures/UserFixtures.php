@@ -36,7 +36,6 @@ class UserFixtures extends Fixture
             $this->addReference('user_' . $i, $user);
         }
 
-
         // Création d’un utilisateur de type “user”
         $user = new User();
         $user->setUsername('user1234');
