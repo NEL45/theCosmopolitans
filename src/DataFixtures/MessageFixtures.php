@@ -23,6 +23,7 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
             $message->setMessage($faker->paragraph(2));
             $message->setFromFreelancer($this->getReference('freelancer_' . $i));
             $message->setToFreelancer($this->getReference('freelancer_' . $ifree2));
+            $message->setEmail($this->getReference('user_' . $ifree2));
             $ifree2--;
             $manager->persist($message);
             $this->addReference('message' . $i, $message);

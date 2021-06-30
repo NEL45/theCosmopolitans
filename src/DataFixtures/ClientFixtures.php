@@ -38,6 +38,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach (self::CLIENT as $index => $clientDetails) {
             $client = new Client();
+            // $client->setUser($this->getReference('user_' . $index, $client));
             $client->setUser($this->getReference('user_'. rand(0,UserFixtures::MAX_USERS - 1)));
             $client->setFirstname($clientDetails['firstname']);
             $client->setLastname($clientDetails['lastname']);
