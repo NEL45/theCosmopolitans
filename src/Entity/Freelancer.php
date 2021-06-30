@@ -30,6 +30,14 @@ class Freelancer
     private string $lastname;
 
 
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="freelance", orphanRemoval=true)
      */

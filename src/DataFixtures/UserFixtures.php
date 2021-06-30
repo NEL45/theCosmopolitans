@@ -4,16 +4,21 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\User;
+
 use App\Entity\Client;
 use App\Entity\Freelancer;
 use Faker\Generator;
+
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Faker\Generator;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
-{
-    public const MAX_USERS = 10;
+
+{   
+    public const MAX_USERS = 5;
+
     private $passwordEncoder;
     private Generator $faker;
 
