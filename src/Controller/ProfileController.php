@@ -19,27 +19,27 @@ use App\Entity\User;
 class ProfileController extends AbstractController
 {
      /**
-     * @Route("/{username}", name="show")
-     * @ParamConverter("user", class="App\Entity\User"),
-     * options={"mapping": {"username": "username"}})
+     * @Route("/{client_id}", name="show")
+     * @ParamConverter("client", class="App\Entity\Client", options={"mapping": {"client_id": "id"}})
      */
-    public function show(History $history, Comment $comment, Client $client, User $user): Response
+    public function show(Client $client): Response
     {
         $histories = $this->getDoctrine()
         ->getRepository(History::class)
         ->findBy([
-            'user' => $user,
+            'client' => $client,
         ]);
 
         $comments = $this->getDoctrine()
         ->getRepository(Comment::class)
         ->findBy([
-            'user' => $user,
+            'client' => $client,
         ]);
 
-        return $this->render('profile_client/show.html.twig', [
+        return $this->render('profile/show.html.twig', [
             'histories' => $histories,
             'comments' => $comments,
+            'client' => $client,
         ]);
     }
 }

@@ -73,7 +73,7 @@
 							</div>
 							<div class="col-md-8 col-sm-12">
 								<div class="card-body">
-									<h3 class="card-title">{{ comment.freelancer.firstname }} {{ comment.freelancer.lastname }}</h3>
+							{#		<h3 class="card-title">{{ comment.freelancer.firstname }} {{ comment.freelancer.lastname }}</h3>  #}
 									<p class="card-text">{{ comment.comment }}</p>
                                     <p class="card-text">
 										<small class="text-muted">{{ comment.createdAt|format_date() }}</small>
@@ -83,24 +83,6 @@
 						</div>
 					</div>
 				    {% endfor %}
-                
-
-
-
-                    {#
-                        {% for history in histories %}
-                        <tr>
-                            <td><img src="https://cdn.pixabay.com/photo/2018/01/01/01/57/woman-3053492_960_720.jpg" class="rounded-circle" width="30px" height="30px"></td>
-                            <td>
-                            {{ history.freelancer.firstname }} {{ history.freelancer.lastname }}: <span class="font-weight-bold"> ⭐ rate / 5</span>
-                            </td>
-                            <td>{{ history.createdAt|format_date() }} </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    #}
                 </div>
             </div>
         </div>
