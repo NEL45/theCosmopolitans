@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Entity\Client;
+use App\Entity\Freelancer;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -136,7 +138,7 @@ class User implements UserInterface
 
         return $this;
     }
-}
+
 
     public function getClient(): ?Client
     {
