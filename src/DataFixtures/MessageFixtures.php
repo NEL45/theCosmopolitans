@@ -6,8 +6,9 @@ use Faker\Factory;
 use App\Entity\Message;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class MessageFixtures extends Fixture
+class MessageFixtures extends Fixture implements DependentFixtureInterface
 {
     public const MAX_MESSAGES = 5;
 
@@ -27,5 +28,13 @@ class MessageFixtures extends Fixture
             $this->addReference('message' . $i, $message);
         }
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            FreelancerFixtures::class,
+            ClientFixtures::class,
+        ];
     }
 }

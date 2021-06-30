@@ -37,7 +37,17 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private string $username;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Client::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $client;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Freelancer::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $freelancer;
 
     public function getId(): ?int
     {
@@ -78,9 +88,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(string $roles): self
     {
-        $this->roles[] = $roles;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -123,6 +133,40 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(Client $client): self
+    {
+        // set the owning side of the relation if necessary
+        if ($client->getUser() !== $this) {
+            $client->setUser($this);
+        }
+
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getFreelancer(): ?Freelancer
+    {
+        return $this->freelancer;
+    }
+
+    public function setFreelancer(Freelancer $freelancer): self
+    {
+        // set the owning side of the relation if necessary
+        if ($freelancer->getUser() !== $this) {
+            $freelancer->setUser($this);
+        }
+
+        $this->freelancer = $freelancer;
 
         return $this;
     }

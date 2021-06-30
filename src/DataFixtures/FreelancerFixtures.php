@@ -3,10 +3,12 @@
 namespace App\DataFixtures;
 
 use App\Entity\Freelancer;
+use App\DataFixtures\UserFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class FreelancerFixtures extends Fixture
+class FreelancerFixtures extends Fixture implements DependentFixtureInterface
 {
     public const FREELANCERS = [
         [
@@ -35,7 +37,7 @@ class FreelancerFixtures extends Fixture
     {
         foreach (self::FREELANCERS as $index => $freelancerDetail) {
             $freelancer = new Freelancer();
-            $freelancer->setUser($this->getReference('user_' . $index, $freelancer));
+            $freelancer->setUser($this->getReference('user_'. rand(0,UserFixtures::MAX_USERS - 1)));
             $freelancer->setFirstname($freelancerDetail['firstname']);
             $freelancer->setLastname($freelancerDetail['lastname']);
             $manager->persist($freelancer);
