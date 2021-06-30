@@ -55,8 +55,9 @@ class MessageController extends AbstractController
      * @ParamConverter("freelancer", class="App\Entity\Freelancer", options={"mapping": {"freelancer_one": "id"}})
      * @ParamConverter("freelancer2", class="App\Entity\Freelancer", options={"mapping": {"freelancer_two": "id"}})
      */
-    public function show(Freelancer $freelancer, Freelancer $freelancer2): Response
+    public function show(Request $request, Freelancer $freelancer, Freelancer $freelancer2): Response
     {
+             
         $messageone = $this->getDoctrine()
         ->getRepository(Message::class)
         ->findBy([
@@ -67,10 +68,29 @@ class MessageController extends AbstractController
         ->findBy([
             'toFreelancer' => $freelancer2,
             ]);
+
+            $message = new Message();
+            $form = $this->createForm(MessageType::class, $message);
+            $form->handleRequest($request);
+            $message->setFromFreelancer($freelancer);
+            $message->setToFreelancer($freelancer2);
+    
+            if ($form->isSubmitted()) {
+    
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($message);
+                $entityManager->flush();
+                $this->addFlash('success', 'Thank you! Your review was sent!');
+                return $this->redirect($request->getUri());
+            }
+
         return $this->render('message/show.html.twig', [
             'freelancer' => $freelancer,
+            'freelancer2' => $freelancer2,
             'messagesone' => $messageone,
             'messagestwo' => $messagetwo,
+            'form' => $form->createView(),
+
         ]);
     }
 

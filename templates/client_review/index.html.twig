@@ -33,8 +33,8 @@
                                         {{ loop.index }}
                                     </th>
                                     <td class="py-3">{{ gig.gig.name }}</td>
-                                    <td class="py-3">{{ gig.client.firstname}}
-                                        {{ gig.client.lastname}}</td>
+                               <td class="py-3">  <a href="{{ path('profile_show', { 'client_id': gig.client.id }) }}"> {{ gig.client.firstname}}
+                                        {{ gig.client.lastname}}</a></td>
                                     <td class="py-3">{{ gig.createdAt|date("d/m/Y") }}</td>
                                     <td class="py-3">Finished</td>
                                     <td class="py-3">

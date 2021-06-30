@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
      * @Route("/{client_id}", name="show")
      * @ParamConverter("client", class="App\Entity\Client", options={"mapping": {"client_id": "id"}})
      */
-    public function show(Client $client, Rating $rating, Comment $comment): Response
+    public function show(Client $client): Response
     {
         $histories = $this->getDoctrine()
         ->getRepository(History::class)
@@ -36,9 +36,7 @@ class ProfileController extends AbstractController
         ->findBy([
             'client' => $client,
         ]);
-
-       
-
+ 
         return $this->render('profile/show.html.twig', [
             'histories' => $histories,
             'comments' => $comments,

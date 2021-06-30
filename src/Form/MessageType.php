@@ -14,9 +14,8 @@ class MessageType extends AbstractType
         $builder
             ->add('subject')
             ->add('message')
-            ->add('sentdate')
-            ->add('fromFreelancer')
-            ->add('toFreelancer')
+           
+           
         ;
     }
 

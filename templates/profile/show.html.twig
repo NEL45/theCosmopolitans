@@ -34,7 +34,7 @@
                             <td>{{ history.freelancer.firstname }} {{ history.freelancer.lastname }}</td>
                             <td>{{ history.createdAt|format_date() }} </td>
                             <td>
-                                <button class="btn btn-success text-light"> Contact the seller </button>
+                                <a class="btn btn-success text-light" href="http://localhost:8000/message/3/1"> Contact the seller </a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -45,7 +45,7 @@
         {# End Section Gig #}
         {# On the right: Section Comments #}
         <div class="comments">
-            <h3 class="my-5">Reviews from service suppliers: <span class="font-weight-bold"> ⭐ rate / 5</span> </h3>        
+            <h3 class="my-5">Reviews from others freelancers: <span class="font-weight-bold"> ⭐ rate / 5</span> </h3>        
             <div class="my-2 px-3 py-2">
                 <div class="row">
                     <div class="col-6">
